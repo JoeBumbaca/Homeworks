@@ -1,5 +1,4 @@
 class Stack
-class Stack
     def initialize
       @stack = []
     end
@@ -15,5 +14,5 @@ class Stack
     def peek
       @stack.last
     end
-  end
-end 
+end
+
