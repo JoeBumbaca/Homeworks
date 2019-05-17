@@ -5,22 +5,21 @@ class Map
   end
 
   def set(key, value)
-    @map << [key, value] unless get(key)
+    pair_index = @map.index { |pair| pair[0] == key }
+    pair_index ? @map[pair_index][1] = value : @map << [key, value] 
   end
 
   def get(key)
     @map.each do |pair|
-      return pair if pair[0] == key
+      return pair[1] if pair[0] == key
     end
     nil
   end
 
   def delete(key)
-    (0...@map.length).each do |idx|
-      pair = @map[idx]
-      @map = @map[0...idx] + @map[(idx + 1)..-1] if pair[0] == key
-    end
-    @map
+    value = get(key)
+    @map.reject! { |pair| pair[0] == key }
+    value
   end
 
   def show
