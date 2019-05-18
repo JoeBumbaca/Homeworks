@@ -14,7 +14,8 @@ class Simon
   end
 
   def take_turn
-
+    show_sequence
+    require_sequence
   end
 
   def show_sequence
@@ -26,7 +27,7 @@ class Simon
   end
 
   def add_random_color
-
+    @seq << COLORS.sample
   end
 
   def round_success_message
@@ -38,6 +39,8 @@ class Simon
   end
 
   def reset_game
-
+    @sequence_length = 1
+    @game_over = false
+    @seq = []
   end
 end
