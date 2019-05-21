@@ -2,6 +2,8 @@ class Board
   attr_accessor :cups
 
   def initialize(name1, name2)
+    @name1 = name1
+    @name2 = name2
     @cups = Array.new(14) {[]}
     place_stones
   end
@@ -10,12 +12,14 @@ class Board
    (0..5).each do |i|
       4.times {@cups[i] << :stone }
     end
+
+    (7..12).each do |i|
+      4.times {@cups[i] << :stone }
+    end
   end
 
   def valid_move?(start_pos)
-    if start_pos > 14
-      raise RuntimeError.new "Invalid starting cup"
-    end
+    raise RuntimeError.new "Invalid starting cup" if start_pos < 0 || start_pos > 12
     if @cups[start_pos].empty?
       raise RuntimeError.new "Starting cup is empty"
     end
@@ -23,8 +27,15 @@ class Board
 
   def make_move(start_pos, current_player_name)
     @cups[start_pos] = []
-    ((start_pos + 1)..(start_pos + 4)).each do |i|
+    start = (start_pos + 1) % 14
+    end_pos = (start_pos + 4) % 14
+    (start..end_pos).each do |i|
       @cups[i] << :stone
+    end
+    #render
+    next_turn(end_pos)
+    if @cups[end_pos].length == 1
+      return :switch
     end
   end
 
@@ -41,6 +52,7 @@ class Board
   end
 
   def one_side_empty?
+    ((0..5).all? { |i| @cups[i].empty? } || (7..12).all? { |i| @cups[i].empty? })
   end
 
   def winner
