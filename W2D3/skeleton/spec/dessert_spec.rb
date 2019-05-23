@@ -62,7 +62,7 @@ describe Dessert do
 
   describe "#make_more" do
     it "calls bake on the dessert's chef with the dessert passed in" do
-      expect 
+      expect(brownie.make_more).to ("chef")
     end
   end
 end
