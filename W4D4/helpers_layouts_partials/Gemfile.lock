@@ -44,6 +44,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
+    annotate (2.7.5)
+      activerecord (>= 3.2, < 7.0)
+      rake (>= 10.4, < 13.0)
     arel (9.0.0)
     bcrypt (3.1.13)
     better_errors (2.5.1)
@@ -134,6 +137,7 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
+    rails-pry (0.0.1)
     railties (5.2.3)
       actionpack (= 5.2.3)
       activesupport (= 5.2.3)
@@ -194,6 +198,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   bcrypt (~> 3.1.7)
   better_errors
   binding_of_caller
@@ -207,6 +212,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.7)
   rails (~> 5.2.0)
+  rails-pry
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
